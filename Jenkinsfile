@@ -22,11 +22,12 @@ pipeline {
         stage('Upload draftset') {
             steps {
                 script {
+		    jobDraft.replace()
                     def csvs = []
                     for (def file : findFiles(glob: 'out/*.csv')) {
                         csvs.add("out/${file.name}")
                     }
-                    uploadDraftset('HMRC Overseas Trade Statistics', csvs)
+                    uploadTidy(csvs, 'https://ons-opendata.github.io/ref_trade/columns.csv')
                 }
             }
         }
@@ -53,7 +54,7 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    publishDraftset()
+                    jobDraft.publish()
                 }
             }
         }

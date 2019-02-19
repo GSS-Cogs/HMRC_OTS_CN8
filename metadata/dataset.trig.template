@@ -5,13 +5,13 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 
-<http://gss-data.org.uk/graph/hmrc-overseas-trade-statistics/metadata> {
-  <http://gss-data.org.uk/data/hmrc-overseas-trade-statistics>
+<http://gss-data.org.uk/graph/trade/hmrc-ots-cn8/metadata> {
+  <http://gss-data.org.uk/data/trade/hmrc-ots-cn8>
         a                    pmd:LinkedDataset , pmd:Dataset , qb:DataSet ;
-        rdfs:comment         "Overseas Trade broken down by Combined Nomenclature categories." ;
+        rdfs:comment         "Overseas Trade broken down by Combined Nomenclature (CN8) categories." ;
         rdfs:label           "HMRC Overseas Trade Statistics"@en ;
         pmd:contactEmail     <mailto:uktradeinfo@hmrc.gsi.gov.uk> ;
-        pmd:graph            <http://gss-data.org.uk/graph/hmrc-overseas-trade-statistics> ;
+        pmd:graph            <http://gss-data.org.uk/graph/trade/hmrc-ots-cn8> ;
         dct:creator          <https://www.gov.uk/government/organisations/hm-revenue-customs> ;
         dct:issued           "2018-03-08T09:30:00Z"^^xsd:dateTime ;
         dct:modified         "${modified}"^^xsd:dateTime ;
