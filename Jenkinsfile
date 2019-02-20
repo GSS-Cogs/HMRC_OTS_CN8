@@ -27,7 +27,7 @@ pipeline {
                     for (def file : findFiles(glob: 'out/*.csv')) {
                         csvs.add("out/${file.name}")
                     }
-                    uploadTidy(csvs[0:3], 'https://ons-opendata.github.io/ref_trade/columns.csv')
+                    uploadTidy(csvs[0..2], 'https://ons-opendata.github.io/ref_trade/columns.csv')
                 }
             }
         }
