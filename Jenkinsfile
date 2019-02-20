@@ -41,8 +41,9 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts 'out/**'
-            junit 'reports/**/*.xml'
+	    script {
+                archiveArtifacts 'out/**'
+	    }
         }
     }
 }
