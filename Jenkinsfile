@@ -27,7 +27,7 @@ pipeline {
                     for (def file : findFiles(glob: 'out/*.csv')) {
                         csvs.add("out/${file.name}")
                     }
-                    uploadTidy(['out/CN8_Non-EU_cod_2012-2016_0000.csv'], 'https://ons-opendata.github.io/ref_trade/columns.csv')
+                    uploadTidy(csvs, 'https://ons-opendata.github.io/ref_trade/columns.csv')
                 }
             }
         }
