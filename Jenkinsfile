@@ -27,27 +27,7 @@ pipeline {
                     for (def file : findFiles(glob: 'out/*.csv')) {
                         csvs.add("out/${file.name}")
                     }
-                    uploadTidy(csvs, 'https://ons-opendata.github.io/ref_trade/columns.csv')
-                }
-            }
-        }
-        stage('Test Draftset') {
-            steps {
-                script {
-                    configFileProvider([configFile(fileId: 'pmd', variable: 'configfile')]) {
-                        def config = readJSON(text: readFile(file: configfile))
-                        String PMD = config['pmd_api']
-                        String credentials = config['credentials']
-                        def drafts = drafter.listDraftsets(PMD, credentials, 'owned')
-                        def jobDraft = drafts.find  { it['display-name'] == env.JOB_NAME }
-                        if (jobDraft) {
-                            withCredentials([usernameColonPassword(credentialsId: credentials, variable: 'USERPASS')]) {
-                                sh "java -cp lib/sparql.jar uk.org.floop.sparqlTestRunner.Run -i -s ${PMD}/v1/draftset/${jobDraft.id}/query?union-with-live=true -a \'${USERPASS}\'"
-                            }
-                        } else {
-                            error "Expecting a draftset for this job."
-                        }
-                    }
+                    uploadTidy(csvs[0:3], 'https://ons-opendata.github.io/ref_trade/columns.csv')
                 }
             }
         }
