@@ -15,13 +15,15 @@ pipeline {
                     reuseNode true
                 }
             }
-            script {
-                    ansiColor('xterm') {
-                        if (fileExists('main.py')) {
-                            sh "jupytext --to notebook *.py"
-                        }
-                        sh "jupyter-nbconvert --output-dir=out --ExecutePreprocessor.timeout=None --execute 'main.ipynb'"
-                    }
+            steps {
+              script {
+                      ansiColor('xterm') {
+                          if (fileExists('main.py')) {
+                              sh "jupytext --to notebook *.py"
+                          }
+                          sh "jupyter-nbconvert --output-dir=out --ExecutePreprocessor.timeout=None --execute 'main.ipynb'"
+                      }
+              }
             }
         }
         stage('Upload draftset') {
