@@ -8,7 +8,7 @@ pipeline {
                 sh 'rm -rf out'
             }
         }
-        stage('Prepare source') {
+        stage('Transform') {
             agent {
                 docker {
                     image 'cloudfluff/databaker'
@@ -34,7 +34,7 @@ pipeline {
                     for (def file : findFiles(glob: 'out/*.csv')) {
                         csvs.add("out/${file.name}")
                     }
-                    uploadTidy(csvs, 'https://ons-opendata.github.io/ref_trade/columns.csv')
+                    uploadTidy(csvs, 'https://gss-cogs.github.io/ref_trade/columns.csv')
                 }
             }
         }
