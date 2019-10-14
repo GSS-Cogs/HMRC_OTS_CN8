@@ -16,7 +16,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'jupyter-nbconvert --to python --stdout Prepare_sources.ipynb | python'
+                sh 'jupyter-nbconvert --to python --stdout main.ipynb | python'
             }
         }
         stage('Upload draftset') {
