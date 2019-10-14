@@ -16,7 +16,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'jupyter-nbconvert --to python --stdout main.ipynb | python'
+                sh 'jupyter-nbconvert --output-dir=out --ExecutePreprocessor.timeout=None --execute main.ipynb'
             }
         }
         stage('Upload draftset') {
