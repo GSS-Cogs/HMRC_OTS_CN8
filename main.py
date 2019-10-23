@@ -167,14 +167,18 @@ with open(destFolder / 'prov.jsonld', 'w') as provFile:
 # +
 modified_date = datetime.now(timezone('Europe/London')).isoformat()
 
-from string import Template
-with open(Path('metadata') / 'dataset.trig.template', 'r') as metadata_template_file:
-    metadata_template = Template(metadata_template_file.read())
-    with open(destFolder / 'dataset.trig', 'w') as metadata_file:
+#from string import Template
+#with open(Path('metadata') / 'dataset.trig.template', 'r') as metadata_template_file:
+#    metadata_template = Template(metadata_template_file.read())
+#    with open(destFolder / 'dataset.trig', 'w') as metadata_file:
+#        metadata_file.write(metadata_template.substitute(modified=modified_date))
+
+# +
+with open(destFolder / 'dataset.trig', 'wb') as metadata_file:
         metadata_file.write(metadata_template.substitute(modified=modified_date))
-# -
 
 csvw = CSVWMetadata('https://gss-cogs.github.io/ref_trade/')
 csvw.create(destFolder / 'observations_0000.csv', destFolder / 'observations_0000.csv-schema.json')
+# -
 
 
