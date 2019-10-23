@@ -133,7 +133,7 @@ destFolder.mkdir(exist_ok=True, parents=True)
 provOutputs = []
 sliceSize = 50000
 for i in np.arange(len(table)//sliceSize):
-    destFile = destFolder / f'CN8_Non-EU_cod_2012-2016_{i:04}.csv'
+    destFile = destFolder / f'observations_{i:04}.csv'
     table.iloc[i*sliceSize:i*sliceSize+sliceSize-1].to_csv(destFile, index=False)
     provOutputs.append((destFile, 'CN8_Non-EU_cod-2012-2016 table'))
 # -
@@ -175,6 +175,6 @@ with open(Path('metadata') / 'dataset.trig.template', 'r') as metadata_template_
 # -
 
 csvw = CSVWMetadata('https://gss-cogs.github.io/ref_trade/')
-csvw.create(destFolder / 'CN8_Non-EU_cod_2012-2016_0000.csv', destFolder / 'CN8_Non-EU_cod_2012-2016_0000.csv-schema.json')
+csvw.create(destFolder / 'observations_0000.csv', destFolder / 'observations_0000.csv-schema.json')
 
 
