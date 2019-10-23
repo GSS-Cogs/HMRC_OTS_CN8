@@ -30,6 +30,7 @@ from datetime import datetime
 import json
 from pytz import timezone
 from os import environ
+from gssutils import *
 
 provActivity = {
     '@id': environ.get('BUILD_URL', 'unknown-build') + "#prepare_sources",
@@ -171,3 +172,9 @@ with open(Path('metadata') / 'dataset.trig.template', 'r') as metadata_template_
     metadata_template = Template(metadata_template_file.read())
     with open(destFolder / 'dataset.trig', 'w') as metadata_file:
         metadata_file.write(metadata_template.substitute(modified=modified_date))
+# -
+
+csvw = CSVWMetadata('https://gss-cogs.github.io/ref_trade/')
+csvw.create(destFolder / 'CN8_Non-EU_cod_2012-2016_0000.csv', destFolder / 'CN8_Non-EU_cod_2012-2016_0000.csv-schema.json')
+
+
