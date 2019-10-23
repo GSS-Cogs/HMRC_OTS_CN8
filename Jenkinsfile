@@ -1,3 +1,8 @@
+transformPipeline {
+    refFamily = 'ref_trade'
+    trelloCard = '5b714a115278a5381b505418'
+}
+"""
 pipeline {
     agent {
         label 'master'
@@ -32,7 +37,7 @@ pipeline {
 		    jobDraft.replace()
                     def csvs = []
                     for (def file : findFiles(glob: 'out/*.csv')) {
-                        csvs.add("out/${file.name}")
+                        csvs.add("out/${///file.name}")
                     }
                     uploadTidy(csvs, 'https://gss-cogs.github.io/ref_trade/columns.csv')
                 }
@@ -54,3 +59,4 @@ pipeline {
         }
     }
 }
+"""
