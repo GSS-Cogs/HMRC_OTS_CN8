@@ -122,7 +122,7 @@ table
 
 table['Measure Type'] = 'GBP Total'
 table['Unit'] = '£'
-table['Flow'] = table['Flow'].map(lambda x: {'i': 'Imports', 'e': 'Exports'}[x])
+table['Flow'] = table['Flow'].map(lambda x: {'i': 'imports', 'e': 'exports'}[x])
 table = table[['Year', 'Flow', 'Combined Nomenclature', 'HMRC Partner Geography', 'Measure Type', 'Unit', 'Value']]
 
 # +
