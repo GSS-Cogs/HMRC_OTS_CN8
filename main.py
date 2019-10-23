@@ -135,7 +135,7 @@ sliceSize = 50000
 for i in np.arange(len(table)//sliceSize):
     destFile = destFolder / f'observations_{i:04}.csv'
     table.iloc[i*sliceSize:i*sliceSize+sliceSize-1].to_csv(destFile, index=False)
-    provOutputs.append((destFile, 'CN8_Non-EU_cod-2012-2016 table'))
+    provOutputs.append((destFile, 'observations table'))
 # -
 
 # Output the PROV metadata as JSON-LD. This goes to the 'out' folder.
