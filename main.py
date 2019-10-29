@@ -170,7 +170,7 @@ modified_date = datetime.now(timezone('Europe/London')).isoformat()
 from string import Template
 with open(Path('metadata') / 'dataset.trig.template', 'r') as metadata_template_file:
     metadata_template = Template(metadata_template_file.read())
-    with open(destFolder / 'dataset.trig', 'wb') as metadata_file:
+    with open(destFolder / 'dataset.trig', 'w') as metadata_file:
         metadata_file.write(metadata_template.substitute(modified=modified_date))
 # -
 
