@@ -175,6 +175,6 @@ with open(Path('metadata') / 'dataset.trig.template', 'r') as metadata_template_
 # -
 
 csvw = CSVWMetadata('https://gss-cogs.github.io/ref_trade/')
-csvw.create(destFolder / 'observations_0000.csv', destFolder / 'observations_0000.csv-schema.json')
+csvw.create(destFolder / 'observations_0000.csv', destFolder / 'observations.csv-schema.json')
 
 
