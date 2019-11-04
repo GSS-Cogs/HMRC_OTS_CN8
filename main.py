@@ -131,11 +131,14 @@ destFolder = Path('out')
 destFolder.mkdir(exist_ok=True, parents=True)
 
 provOutputs = []
+output_file_names = []
 sliceSize = 50000
 for i in np.arange(len(table)//sliceSize):
-    destFile = destFolder / f'observations_{i:04}.csv'
+    outfile_name = f'observations_{i:04}.csv'
+    destFile = destFolder / outfile_name
     table.iloc[i*sliceSize:i*sliceSize+sliceSize-1].to_csv(destFile, index=False)
     provOutputs.append((destFile, 'observations table'))
+    output_file_names.append(outfile_name)
 # -
 
 # Output the PROV metadata as JSON-LD. This goes to the 'out' folder.
@@ -175,6 +178,7 @@ with open(Path('metadata') / 'dataset.trig.template', 'r') as metadata_template_
 # -
 
 csvw = CSVWMetadata('https://gss-cogs.github.io/ref_trade/')
-csvw.create(destFolder / 'observations_0000.csv', destFolder / 'observations.csv-schema.json')
+for out_file in output_file_names:
+    csvw.create(destFolder / out_file, destFolder / f'{out_file}-schema.json')
 
 
